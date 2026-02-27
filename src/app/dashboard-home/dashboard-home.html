@@ -1,0 +1,82 @@
+<div class="container py-4">
+  <h1 class="mb-4">📊 Content Dashboard</h1>
+
+  <div *ngIf="loading()" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2 text-muted">Loading metrics...</p>
+  </div>
+
+  <div *ngIf="error()" class="alert alert-danger">
+    {{ error() }}
+  </div>
+
+  <div *ngIf="!loading() && !error()" class="row g-4">
+    <!-- Thrive Daily Card -->
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="card-title">🚀 Thrive Daily</h5>
+              <p class="card-text text-muted">Facebook AI/Tech content</p>
+            </div>
+            <span class="badge bg-primary fs-6">{{ totalThrivePosts() }} posts</span>
+          </div>
+          <div *ngIf="recentThrive" class="mt-3">
+            <small class="text-muted">Latest: {{ recentThrive()?.date }} {{ recentThrive()?.time }}</small>
+            <p class="mt-1">{{ recentThrive()?.title }}</p>
+          </div>
+          <button class="btn btn-primary mt-3" (click)="goToThrive()">View All Thrive Posts</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIA UY Card -->
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="card-title">💖 MIA UY</h5>
+              <p class="card-text text-muted">Filipina model character posts</p>
+            </div>
+            <span class="badge bg-success fs-6">{{ totalMiaPosts() }} posts</span>
+          </div>
+          <div *ngIf="recentMia" class="mt-3">
+            <small class="text-muted">Latest: {{ recentMia()?.date }} {{ recentMia()?.time }}</small>
+            <p class="mt-1">{{ recentMia()?.title }}</p>
+          </div>
+          <button class="btn btn-success mt-3" (click)="goToMia()">View All MIA Posts</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-12 mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">⚡ Quick Actions</h5>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <button class="btn btn-outline-primary w-100" (click)="goToThrive()">
+                Generate Thrive Content
+              </button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-outline-success w-100" (click)="goToMia()">
+                Generate MIA UY Content
+              </button>
+            </div>
+            <div class="col-md-4">
+              <a class="btn btn-outline-secondary w-100" href="http://72.61.123.231:3000/api/health" target="_blank">
+                Check API Health
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

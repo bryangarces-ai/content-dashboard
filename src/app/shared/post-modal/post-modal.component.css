@@ -1,0 +1,4 @@
+/* minimal modal styles, relies on Bootstrap */
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}

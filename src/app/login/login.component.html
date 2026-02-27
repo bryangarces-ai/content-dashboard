@@ -1,0 +1,19 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
+  <div class="card p-4" style="max-width: 400px; width:100%;">
+    <h3 class="card-title mb-3">Please sign in</h3>
+    <form (submit)="submit(); $event.preventDefault()">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input class="form-control" [(ngModel)]="username" name="username" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" required />
+      </div>
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <button class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+  </div>
+</div>

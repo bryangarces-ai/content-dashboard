@@ -1,0 +1,21 @@
+<div class="modal fade show" tabindex="-1" style="display: block;" aria-modal="true" role="dialog" *ngIf="post">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ post.title }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- render markdown so bold markers disappear when displayed -->
+        <div class="bg-light p-3 rounded" [innerHTML]="post.content | markdown"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onPublish()" [disabled]="publishing">
+          <i class="bi" [class.bi-check]="!publishing" [class.bi-arrow-repeat]="publishing"></i>
+          {{ publishing ? 'Publishing...' : 'Mark Published' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

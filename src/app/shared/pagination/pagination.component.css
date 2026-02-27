@@ -1,0 +1,4 @@
+/* styles for pagination component */
+.pagination .page-link {
+  cursor: pointer;
+}
